@@ -1,3 +1,267 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
+
+/*@import "public/assets/css/mixing.scss";*/
+
+body {
+    @apply bg-light font-proxima-rg text-black;
+    font-size: 21px;
+    line-height: 33px;
+}
+
+img {
+    @apply w-full h-auto ;
+}
+
+.img-container {
+    @apply relative overflow-hidden ;
+    visibility: hidden;
+    border-radius: 10px;
+}
+
+.img-container img {
+    object-fit: cover;
+}
+
+.img-overlay {
+    @apply bg-blue w-full h-full absolute top-0 left-0 ;
+    z-index: 2;
+}
+
+.title-wrapper h2 {
+    line-height: 85px;
+}
+
+.main-navigation-wrapper {
+    @apply fixed w-full top-0 left-0 z-50;
+    -webkit-backdrop-filter: saturate(1) blur(0) !important;
+    -moz-backdrop-filter: saturate(1) blur(0) !important;
+    -o-backdrop-filter: saturate(1) blur(0) !important;
+    -ms-backdrop-filter: saturate(1) blur(0) !important;
+    backdrop-filter: saturate(1) blur(0) !important;
+}
+
+.fixed-header .main-navigation-wrapper {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: saturate(1) blur(20px) !important;
+    -o-backdrop-filter: saturate(1) blur(20px) !important;
+    -ms-backdrop-filter: saturate(1) blur(20px) !important;
+    backdrop-filter: saturate(1) blur(20px) !important;
+    border-bottom: 1px solid #edeef1;
+    -webkit-transition: 0.3s !important;
+    -moz-transition: 0.3s !important;
+    -o-transition: 0.3s !important;
+    -ms-transition: 0.3s !important;
+    transition: 0.3s !important;
+}
+
+.logo {
+    width: 100px;
+}
+
+.menu-item {
+    @apply py-2 px-4 mx-1 text-black transition-all duration-500 font-proxima-md relative text-base;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    @apply text-blue;
+}
+
+.menu-item:before {
+    @apply absolute opacity-0 bg-blue w-0 h-0 rounded-full transition-all duration-500;
+    content: "";
+    left: calc(50% - 4px);
+    top: -30px;
+}
+
+.menu-item.active:before,
+.menu-item:hover:before {
+    @apply w-2 h-2 top-0 opacity-100;
+}
+
+
+.card {
+    @apply bg-white px-5 py-8 rounded-card shadow-card ;
+}
+
+.hi-content {
+    top: calc(35% - 50px);
+    left: calc(15% - 113px);
+}
+
+.hi-discription {
+    top: calc(70% - 81px);
+    left: calc(15% - 113px);
+}
+
+.landing-social-content:after {
+    @apply bg-black absolute ;
+    top: -100%;
+    content: '';
+    width: 2px;
+    height: 100%;
+    right: calc(50% - 1px);
+    z-index: -1;
+}
+
+.landing-social-content:before {
+    @apply bg-light absolute ;
+    top: calc(-64% - 1px);
+    content: '';
+    width: 2px;
+    height: 15%;
+    right: calc(50% - 1px);
+    z-index: 0;
+}
+
+.social-item i {
+    @apply bg-white text-center rounded-full mb-3 text-black transition-all duration-500;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+}
+
+.social-item:hover i {
+    @apply bg-blue text-white;
+}
+
+
+/*-----------------------------
+  Menu Mobile
+-----------------------------*/
+.menu {
+    @apply text-black p-0 m-0 outline-none relative border-none bg-none cursor-pointer;
+    width: 36px;
+    height: 36px;
+    -webkit-appearence: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu:focus {
+    @apply outline-none;
+}
+
+.menu.ripplemenu:active:before {
+    background: #165df5;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 100%;
+    opacity: 0.25;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    top: 0;
+    left: -9px;
+    animation: RippleMenu 0.3s cubic-bezier(0.29, -0.01, 0.17, 0.95);
+}
+
+.menu svg {
+    width: 44px;
+    height: 48px;
+    top: -6px;
+    left: -14px;
+    stroke: #0b2238;
+    stroke-width: 0.2rem;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    display: block;
+    position: absolute;
+}
+
+.menu svg path {
+    transition: stroke-dasharray var(--duration, 0.85s) var(--easing, ease) var(--delay, 0s), stroke-dashoffset var(--duration, 0.85s) var(--easing, ease) var(--delay, 0s);
+    stroke-dasharray: var(--array-1, 26px) var(--array-2, 100px);
+    stroke-dashoffset: var(--offset, 126px);
+    transform: translateZ(0);
+}
+
+.menu svg path:nth-child(2) {
+    --duration: 0.7s;
+    --easing: ease-in;
+    --offset: 100px;
+    --array-2: 74px;
+}
+
+.menu svg path:nth-child(3) {
+    --offset: 133px;
+    --array-2: 107px;
+}
+
+.menu.active svg path {
+    --offset: 57px;
+}
+
+.menu.active svg path:nth-child(1), .menu.active svg path:nth-child(3) {
+    --delay: 0.15s;
+    --easing: cubic-bezier(0.2, 0.4, 0.2, 1.1);
+}
+
+.menu.active svg path:nth-child(2) {
+    --duration: 0.4s;
+    --offset: 2px;
+    --array-1: 1px;
+}
+
+.menu.active svg path:nth-child(3) {
+    --offset: 58px;
+}
+
+.mobilenav-overlay {
+    position: fixed;
+    width: 100%;
+    height: 0px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 40;
+    display: block;
+    transition: 0.56s cubic-bezier(0.52, 0.16, 0.24, 1);
+    opacity: 1;
+    pointer-events: none;
+    overflow-x: hidden;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.mobilenav-active {
+    /*transition-delay: 550ms;*/
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+    height: 100%;
+}
+
+.mobilenav-content {
+    background-color: transparent;
+    position: absolute;
+    z-index: 12;
+    opacity: 1;
+    pointer-events: auto;
+    height: 100%;
+}
+
+.mobilenav-wrapper {
+    padding-left: 4%;
+    padding-right: 4%;
+    top: 50px;
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mobile-menu {
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
